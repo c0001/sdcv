@@ -1,3 +1,5 @@
+set(CMAKE_LEGACY_CYGWIN_WIN32 0) # Remove when CMake >= 2.8.4 is required
+
 project(sdcv)
 
 # Older versions have a different signature for CMAKE_MINIMUM_REQUIRED,

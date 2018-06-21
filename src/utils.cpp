@@ -25,10 +25,10 @@
 #include <algorithm>
 #include <cstdio>
 #include <cstdlib>
-#include <glib.h>
-#include <glib/gi18n.h>
 #include <iomanip>
 #include <sstream>
+#include <glib.h>
+#include <glib/gi18n.h>
 
 #include "utils.hpp"
 
