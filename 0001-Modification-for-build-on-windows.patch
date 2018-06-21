@@ -1,0 +1,40 @@
+From cdef6efd2fd9abec07b9d98ac62ea02395d67248 Mon Sep 17 00:00:00 2001
+From: et2010 <jianwang.academic@gmail.com>
+Date: Thu, 21 Jun 2018 14:53:01 +0800
+Subject: [PATCH] Modification for build on windows
+
+---
+ CMakeLists.txt | 2 ++
+ src/utils.cpp  | 4 ++--
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a34e357..8da5e4f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,3 +1,5 @@
++set(CMAKE_LEGACY_CYGWIN_WIN32 0) # Remove when CMake >= 2.8.4 is required
++
+ project(sdcv)
+ 
+ # Older versions have a different signature for CMAKE_MINIMUM_REQUIRED,
+diff --git a/src/utils.cpp b/src/utils.cpp
+index 33bfeaa..bae4735 100644
+--- a/src/utils.cpp
++++ b/src/utils.cpp
+@@ -25,10 +25,10 @@
+ #include <algorithm>
+ #include <cstdio>
+ #include <cstdlib>
+-#include <glib.h>
+-#include <glib/gi18n.h>
+ #include <iomanip>
+ #include <sstream>
++#include <glib.h>
++#include <glib/gi18n.h>
+ 
+ #include "utils.hpp"
+ 
+-- 
+2.17.1.windows.2
+

@@ -1,0 +1,44 @@
+* 准备
+在编译之前，先将源码打上补丁，否则会编译失败。详情可以参考[[https://blog.csdn.net/lllcfr/article/details/8669558][这里]] [fn:1]。
+
+#+BEGIN_SRC sh
+patch -i 0001-Modification-for-build-on-windows.patch
+#+END_SRC
+
+
+* 安装依赖
+编译应在msys而不是mingw下，后者动态编译的c++程序运行时会出错。因为msvcrt.dll只支持
+mingw编译的c程序的运行，[[https://stackoverflow.com/questions/28783079/mingw-and-msvcrt-dll-confusion][并不支持c++程序的运行]]。静态编译又太麻烦，所以选择msys。
+
+sdvc的主要依赖有glib2，libreadline，zlib，gettext等，有些需要安装开发包，后面加
+一个~-devel~就可以了，当然cmake，gcc，make这些也是要装的。装完之后就可以开始编译。
+
+* 编译
+下面的编译过程假设sdvc的源码在sdvc-0.5.2目录下。
+
+#+BEGIN_SRC sh
+mkdir build-sdvc
+cd build-sdvc
+cmake ../sdvc-0.5.2
+make
+make lang
+make install
+#+END_SRC
+
+安装完之后，字典文件可以解压之后放在=~/.stardict/dic=目录下，然后就可以试验一下了。
+
+#+BEGIN_SRC sh
+sdvc test
+#+END_SRC
+
+
+
+
+
+
+
+* Footnotes
+
+[fn:1] 我曾经在sdvc的github issue列表中发帖询问，也是一个不错的参考来源：https://github.com/Dushistov/sdcv/issues/45
+
+# build_on_windows.org ends here.
